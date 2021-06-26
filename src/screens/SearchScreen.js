@@ -1,14 +1,16 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import SearchBar from "../components/SearchBar";
 
 const SearchScreen = () => {
-    return (
-        <View>
-            <Text>Search Screen</Text>
-        </View>
-    )
-}
+  return (
+    <View>
+      <Text>Search Screen</Text>
+      <SearchBar />
+    </View>
+  );
+};
 
-export default SearchScreen
+export default SearchScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
