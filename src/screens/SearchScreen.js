@@ -5,17 +5,21 @@ import yelp from "../api/yelp";
 const SearchScreen = () => {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
-
+  const [errorMsg,setErrorMsg] = useState('')
   const makeaSearch = async () => {
-    const response = await yelp.get("/search", {
-      params: {
-        limit: 50,
-        term: search,
-        location: "dallas",
-      },
-    });
-    console.log(response.data.businesses);
-    setResults(response.data.businesses);
+    try {
+      const response = await yelp.get("/search", {
+        params: {
+          limit: 50,
+          term: search,
+          location: "dallas",
+        },
+      });
+      setResults(response.data.businesses);
+    } catch (error) {
+      setErrorMsg(error)
+    }
+
   };
   return (
     <View>
@@ -24,6 +28,7 @@ const SearchScreen = () => {
         onTermChange={(newTerm) => setSearch(newTerm)}
         onTermSubmit={makeaSearch}
       />
+      {errorMsg.length > 0 ? <Text>Something went wrong</Text>:null}
       <Text>{search}</Text>
       <Text>You have around {results.length} restaurants for your search!</Text>
     </View>
