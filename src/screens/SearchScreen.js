@@ -5,30 +5,29 @@ import yelp from "../api/yelp";
 const SearchScreen = () => {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
-  const [errorMsg,setErrorMsg] = useState('')
-  const makeaSearch = async () => {
+  const [errorMsg, setErrorMsg] = useState("");
+  const makeaSearch = async (initialSearch) => {
     try {
       const response = await yelp.get("/search", {
         params: {
           limit: 50,
-          term: search,
+          term: initialSearch, //probably can use useEffect
           location: "dallas",
         },
       });
       setResults(response.data.businesses);
     } catch (error) {
-      setErrorMsg(error)
+      setErrorMsg(error);
     }
-
   };
   return (
     <View>
       <SearchBar
         term={search}
         onTermChange={(newTerm) => setSearch(newTerm)}
-        onTermSubmit={makeaSearch}
+        onTermSubmit={() => makeaSearch(search)}
       />
-      {errorMsg.length > 0 ? <Text>Something went wrong</Text>:null}
+      {errorMsg.length > 0 ? <Text>Something went wrong</Text> : null}
       <Text>{search}</Text>
       <Text>You have around {results.length} restaurants for your search!</Text>
     </View>
