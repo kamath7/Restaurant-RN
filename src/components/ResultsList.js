@@ -1,14 +1,19 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-const ResultsList = () => {
+const ResultsList = ({title,}) => {
     return (
         <View>
-            <Text>Results list</Text>
+            <Text style={styles.titleStyle}>{title}</Text>
         </View>
     )
 }
 
 export default ResultsList
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    titleStyle:{
+        fontSize: 18,
+        fontWeight: 'bold'
+    }
+})
