@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SearchBar from "../components/SearchBar";
 import yelp from "../api/yelp";
@@ -6,6 +6,7 @@ const SearchScreen = () => {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
+
   const makeaSearch = async (initialSearch) => {
     try {
       const response = await yelp.get("/search", {
@@ -20,6 +21,9 @@ const SearchScreen = () => {
       setErrorMsg(error);
     }
   };
+  useEffect(()=>{
+    makeaSearch('fish')
+  },[])
   return (
     <View>
       <SearchBar
