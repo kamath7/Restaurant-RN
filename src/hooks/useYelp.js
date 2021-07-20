@@ -23,5 +23,5 @@ export default () => {
     makeaSearch("fish");
   }, []);
 
-  return [results, errorMsg, makeaSearch]
+  return [results, makeaSearch, errorMsg];
 };

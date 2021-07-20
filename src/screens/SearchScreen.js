@@ -7,8 +7,7 @@ import yelp from "../api/yelp";
 import ResultsList from "../components/ResultsList";
 const SearchScreen = () => {
   const [search, setSearch] = useState("");
-  const [makeaSearch, results, errorMsg] = useYelp();
-
+  const [results, makeaSearch, errorMsg] = useYelp();
   const filterResultsByPrice = (price) => {
     return results.filter((result) => {
       return result.price === price;
@@ -18,7 +17,7 @@ const SearchScreen = () => {
     <View>
       <SearchBar
         term={search}
-        onTermChange={(newTerm) => setSearch(newTerm)}
+        onTermChange={setSearch}
         onTermSubmit={() => makeaSearch(search)}
       />
       {errorMsg.length > 0 ? <Text>Something went wrong</Text> : null}
