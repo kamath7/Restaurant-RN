@@ -1,10 +1,15 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, FlatList } from 'react-native'
 
-const ResultsList = ({title,}) => {
+const ResultsList = ({title,results}) => {
     return (
         <View>
             <Text style={styles.titleStyle}>{title}</Text>
+            <Text>Results : {results.length}</Text>
+            <FlatList
+                horizontal={true}
+                
+            />
         </View>
     )
 }
