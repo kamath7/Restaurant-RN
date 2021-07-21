@@ -14,14 +14,14 @@ const SearchScreen = () => {
     });
   };
   return (
-    <View style={{marginLeft: 10}}>
+    <View >
       <SearchBar
         term={search}
         onTermChange={setSearch}
         onTermSubmit={() => makeaSearch(search)}
       />
       {errorMsg.length > 0 ? <Text>Something went wrong</Text> : null}
-      <Text>{search}</Text>
+    
       <Text>You have around {results.length} restaurants for your search!</Text>
       <ResultsList results={filterResultsByPrice("$")} title={"Light Budget"} />
       <ResultsList
