@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View , ScrollView} from "react-native";
 
 import useYelp from "../hooks/useYelp";
 import SearchBar from "../components/SearchBar";
-import yelp from "../api/yelp";
 import ResultsList from "../components/ResultsList";
 const SearchScreen = () => {
   const [search, setSearch] = useState("");
@@ -22,13 +21,15 @@ const SearchScreen = () => {
       />
       {errorMsg.length > 0 ? <Text>Something went wrong</Text> : null}
     
-      <Text>You have around {results.length} restaurants for your search!</Text>
+
+      <ScrollView>
       <ResultsList results={filterResultsByPrice("$")} title={"Light Budget"} />
       <ResultsList
         results={filterResultsByPrice("$$")}
         title={"Moderate Budget"}
       />
       <ResultsList results={filterResultsByPrice("$$$")} title={"Expensive"} />
+      </ScrollView>
     </View>
   );
 };

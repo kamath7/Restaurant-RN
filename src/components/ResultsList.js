@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList, ScrollView} from "react-native";
 import ResultsDetail from "./ResultsDetail";
 const ResultsList = ({ title, results }) => {
   return (
@@ -10,6 +10,7 @@ const ResultsList = ({ title, results }) => {
 
       <FlatList
         horizontal
+        showsHorizontalScrollIndicator={false}
         data={results}
         keyExtractor={(result) => result.id}
         renderItem={({ item }) => {
