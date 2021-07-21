@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, ScrollView } from "react-native";
 import useYelp from "../hooks/useYelp";
 import SearchBar from "../components/SearchBar";
 import ResultsList from "../components/ResultsList";
-const SearchScreen = (props) => {
+const SearchScreen = ({navigation}) => {
   const [search, setSearch] = useState("");
   const [results, makeaSearch, errorMsg] = useYelp();
   const filterResultsByPrice = (price) => {
@@ -27,14 +27,17 @@ const SearchScreen = (props) => {
         <ResultsList
           results={filterResultsByPrice("$")}
           title={"Light Budget"}
+          navigation={navigation}
         />
         <ResultsList
           results={filterResultsByPrice("$$")}
           title={"Moderate Budget"}
+          navigation={navigation}
         />
         <ResultsList
           results={filterResultsByPrice("$$$")}
           title={"Expensive"}
+          navigation={navigation}
         />
       </ScrollView>
     </View>
