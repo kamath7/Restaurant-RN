@@ -24,14 +24,15 @@ const styles = StyleSheet.create({
   searchBar: {
     backgroundColor: "#F0EEEE",
     marginHorizontal: 15,
-    borderRadius: 7,
+    borderRadius: 5,
     height: 50,
     flexDirection: "row",
-    marginTop: 15,
+    marginBottom: 10,
+    marginTop: 10
   },
   inputStyle: {
     flex: 1,
-    fontSize: 19,
+    fontSize: 17,
   },
   iconStyle: {
     fontSize: 35,

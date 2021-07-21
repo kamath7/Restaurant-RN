@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, ScrollView } from "react-native";
 import useYelp from "../hooks/useYelp";
 import SearchBar from "../components/SearchBar";
 import ResultsList from "../components/ResultsList";
-const SearchScreen = () => {
+const SearchScreen = (props) => {
   const [search, setSearch] = useState("");
   const [results, makeaSearch, errorMsg] = useYelp();
   const filterResultsByPrice = (price) => {
