@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import ResultsDetail from "./ResultsDetail";
+import { withNavigation } from "react-navigation";
 const ResultsList = ({ title, results, navigation }) => {
   return (
     <View style={styles.container}>
@@ -37,7 +38,7 @@ const ResultsList = ({ title, results, navigation }) => {
   );
 };
 
-export default ResultsList;
+export default withNavigation(ResultsList);
 
 const styles = StyleSheet.create({
   titleStyle: {
