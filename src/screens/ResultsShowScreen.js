@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, FlatList, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Image,
+  ScrollView,
+} from "react-native";
 import yelp from "../api/yelp";
 
 const ResultsShowScreen = ({ navigation }) => {
@@ -9,6 +16,7 @@ const ResultsShowScreen = ({ navigation }) => {
   const getResult = async (id) => {
     const response = await yelp.get(`/${id}`);
     setResult(response.data);
+    console.log(result);
   };
   useEffect(() => {
     getResult(id);
@@ -19,20 +27,30 @@ const ResultsShowScreen = ({ navigation }) => {
   }
   return (
     <View>
-      <Text>{result.name}</Text>
-      <Text>{JSON.stringify(result.photos)}</Text>
-      <FlatList
-        data={result.photos}
-        keyExtractor={(photo) => photo}
-        renderItem={({ item }) => {
-          <Image
-            style={styles.image}
-            source={{
-              uri: item,
-            }}
-          />;
-        }}
-      />
+      <Text style={styles.heading}>{result.name}</Text>
+      <Text style={{ marginTop: 10, marginBottom: 10 }}>
+        Address:{" "}
+        {result.location.display_address.reduce(
+          (add, text) => add + " " + text,
+          ""
+        )}
+      </Text>
+      <ScrollView>
+        <FlatList
+          data={result.photos}
+          keyExtractor={(photo) => photo}
+          renderItem={({ item }) => {
+            return (
+              <Image
+                style={styles.image}
+                source={{
+                  uri: item,
+                }}
+              />
+            );
+          }}
+        />
+      </ScrollView>
     </View>
   );
 };
@@ -40,9 +58,14 @@ const ResultsShowScreen = ({ navigation }) => {
 export default ResultsShowScreen;
 
 const styles = StyleSheet.create({
+  heading: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
   image: {
-    width: 300,
-    height: 400,
-    borderRadius: 5
+    width: "100%",
+    height: 200,
+    borderRadius: 5,
+    marginVertical: 10,
   },
 });
