@@ -11,7 +11,7 @@ export default () => {
         params: {
           limit: 50,
           term: initialSearch, //probably can use useEffect
-          location: "dallas",
+          location: "dresden",
         },
       });
       setResults(response.data.businesses);
