@@ -13,7 +13,9 @@ const SearchScreen = () => {
     });
   };
   return (
+    
     <View style={{ flex: 1 }}>
+    {/* Alternate could be to use <> </> instead of view */}
       <SearchBar
         term={search}
         onTermChange={setSearch}
