@@ -20,6 +20,7 @@ const ResultsShowScreen = ({ navigation }) => {
   return (
     <View>
       <Text>{result.name}</Text>
+      <Text>{JSON.stringify(result.photos)}</Text>
       <FlatList
         data={result.photos}
         keyExtractor={(photo) => photo}
