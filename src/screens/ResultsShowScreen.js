@@ -11,16 +11,21 @@ import yelp from "../api/yelp";
 
 const ResultsShowScreen = ({ navigation }) => {
   const [result, setResult] = useState(null);
-
+  const [name, setName] = useState('');
+  // const headerName = navigation.setParam('')
   const id = navigation.getParam("id");
   const getResult = async (id) => {
     const response = await yelp.get(`/${id}`);
     setResult(response.data);
-    console.log(result);
+    
+
   };
   useEffect(() => {
     getResult(id);
+    
+
   }, []);
+
 
   if (!result) {
     return null;
@@ -55,6 +60,11 @@ const ResultsShowScreen = ({ navigation }) => {
   );
 };
 
+// ResultsShowScreen.navigationOptions = (navigationData) => {
+//   return {
+//     headerTitle: navigationData.navigation.getParam("name"),
+//   };
+// };
 export default ResultsShowScreen;
 
 const styles = StyleSheet.create({

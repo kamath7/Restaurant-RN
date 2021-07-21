@@ -12,7 +12,6 @@ const ResultsDetail = ({ result }) => {
     </View>
   );
 };
-
 export default ResultsDetail;
 
 const styles = StyleSheet.create({
